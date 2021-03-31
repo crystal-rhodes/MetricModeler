@@ -30,10 +30,6 @@ namespace MetricModeler
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void readProjectHistory() 
         {
             // Connection string
@@ -117,6 +113,5 @@ namespace MetricModeler
             foreach (Language l in languageList)
                 Console.WriteLine(l.ToString());
         }
-
     }
 }
