@@ -16,6 +16,10 @@ namespace MetricModeler
     {
         List<ProjectHistory> projectHistoryList;
         List<Language> languageList;
+        const double EAF = 1; // effort adjustment factor
+        const double T = 0.35; // sloc-dependent coefficient
+        const double P = 1.14; // project complexity
+
         public Form1()
         {
             InitializeComponent();
@@ -29,8 +33,12 @@ namespace MetricModeler
             readLanguageList();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            languageComboBox.DataSource = languageList.Select(l => l.LanguageName).ToList();
+        }
 
-        private void readProjectHistory() 
+        private void readProjectHistory()
         {
             // Connection string
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\".\\resource\\ProjectHistory.accdb\"";
@@ -50,7 +58,7 @@ namespace MetricModeler
                         while (reader.Read())
                         {
                             projectHistoryList.Add(new ProjectHistory(
-                                reader["Project #"].ToString(), 
+                                reader["Project #"].ToString(),
                                 reader["Project Name"].ToString(),
                                 reader["Project Description"].ToString(),
                                 reader["Project Type"].ToString(),
@@ -59,7 +67,7 @@ namespace MetricModeler
                                 (int)reader["Est Duration"],
                                 (int)reader["Est Project Cost"],
                                 (int)reader["Actual Project Cost"],
-                                (int)reader["Est Effort"], 
+                                (int)reader["Est Effort"],
                                 (int)reader["Actual Effort"],
                                 (int)reader["Est LOC"],
                                 (int)reader["Actual LOC"],
@@ -90,7 +98,7 @@ namespace MetricModeler
                 Console.WriteLine(p.ToString());
         }
 
-        private void readLanguageList() 
+        private void readLanguageList()
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -112,6 +120,23 @@ namespace MetricModeler
 
             foreach (Language l in languageList)
                 Console.WriteLine(l.ToString());
+        }
+
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            // PM = 2.45*EAF*(SLOC/1000)^P
+            double PM = 2.45 * EAF * Math.Pow(double.Parse(LOCTextBox.Text) / 100, P);
+            scopeLabel.Text = Math.Round(PM, 2) + " Person-months"; // scope
+
+            // DM = 2.50*(PM)^T
+            double DM = 2.50 * Math.Pow(PM, T);
+            timeLabel.Text = Math.Round(DM, 2) + " Months"; // cost
+
+            // function points
+            double selectedAvg = languageList.Find(l => l.LanguageName == languageComboBox.SelectedItem.ToString()).Average;
+            double FP = double.Parse(LOCTextBox.Text) / selectedAvg;
+            functionPointsLabel.Text = FP.ToString();
         }
     }
 }
