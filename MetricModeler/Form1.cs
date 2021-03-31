@@ -1,12 +1,10 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using LicenseContext = OfficeOpenXml.LicenseContext;
 
@@ -19,6 +17,7 @@ namespace MetricModeler
         const double EAF = 1; // effort adjustment factor
         const double T = 0.35; // sloc-dependent coefficient
         const double P = 1.14; // project complexity
+        const double pricingPerHour = 50.00;
 
         public Form1()
         {
@@ -122,21 +121,73 @@ namespace MetricModeler
                 Console.WriteLine(l.ToString());
         }
 
+        public static readonly int scale = 3;
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            // PM = 2.45*EAF*(SLOC/1000)^P
-            double PM = 2.45 * EAF * Math.Pow(double.Parse(LOCTextBox.Text) / 100, P);
-            scopeLabel.Text = Math.Round(PM, 2) + " Person-months"; // scope
+            try
+            {
+                int factor = 14 * scale;
+                double complexitiyAdjustmentFactor = 0.65 + (0.01 * factor);
 
-            // DM = 2.50*(PM)^T
-            double DM = 2.50 * Math.Pow(PM, T);
-            timeLabel.Text = Math.Round(DM, 2) + " Months"; // cost
+                int averageStaffingLevel = int.Parse(averageStaffingLevelTextBox.Text);
 
-            // function points
-            double selectedAvg = languageList.Find(l => l.LanguageName == languageComboBox.SelectedItem.ToString()).Average;
-            double FP = double.Parse(LOCTextBox.Text) / selectedAvg;
-            functionPointsLabel.Text = FP.ToString();
+                int inputsValue = int.Parse(noInputValue.Text);
+                int outputsValue = int.Parse(noOutputValue.Text);
+                int inquiriesValue = int.Parse(noInquiriesValue.Text);
+                int logicalFilesValue = int.Parse(noLogicalFilesValue.Text);
+                int externalInterfacesValue = int.Parse(noExternalInterfacesValue.Text);
+
+                int inputsWeightingFactor = int.Parse(noInputWeightingFactor.Text);
+                int outputsWeightingFactor = int.Parse(noOutputWeightingFactor.Text);
+                int inquiriesWeightingFactor = int.Parse(noInquiriesWeightingFactor.Text);
+                int logicalFilesWeightingFactor = int.Parse(noLogicalFilesWeightingFactor.Text);
+                int externalInterfacesWeightingFactor = int.Parse(noExternalInterfacesWeightingFactor.Text);
+
+                // Calculate unadjusted function points
+                int unadjustedFunctionPoints =
+                            (inputsValue * inputsWeightingFactor) +
+                            (outputsValue * outputsWeightingFactor) +
+                            (inquiriesValue * inquiriesWeightingFactor) +
+                            (logicalFilesValue * logicalFilesWeightingFactor) +
+                            (externalInterfacesValue * externalInterfacesWeightingFactor);
+
+                // Calculate function points 
+                double functionPoints = complexitiyAdjustmentFactor * unadjustedFunctionPoints;
+
+                // Get Language Productivity Factor
+                double languageProductivityFactor = languageList.Find(l => l.LanguageName == languageComboBox.SelectedItem.ToString()).Average;
+
+                // Calculate lines of code
+                double LOC = functionPoints * languageProductivityFactor;
+
+                // Calculate thousands of code
+                double KLOC = functionPoints * languageProductivityFactor / 1000;
+
+                // PM = 2.45*EAF*(SLOC/1000)^P
+                double personMonth = 2.45 * EAF * Math.Pow(LOC / 100, P);
+
+                personMonth =  personMonth * ( 100 - (1.0 * averageStaffingLevel / 5 * 10)) / 100;
+
+                // DM = 2.50*(PM)^T
+                double durationMonths = 2.50 * Math.Pow(personMonth, T);
+
+                // Assuming that 7 working hours per day, 20 days per month, and 12 working months per year
+                double durationDays = durationMonths * 20 * 7;
+
+                double cost = durationDays * pricingPerHour;
+
+                timeLabel.Text = Math.Round(durationMonths, 2) + " Months"; // time
+                scopeLabel.Text = Math.Round(personMonth, 2) + " Person-months"; // scope
+                costLabel.Text = Math.Round(cost, 2) + "$";
+                functionPointsLabel.Text = Math.Round(functionPoints, 2).ToString();
+                klocLabel.Text = Math.Round(KLOC, 2).ToString();
+                languageProductivityLabel.Text = languageProductivityFactor.ToString();
+            }
+            catch (Exception ex)
+            {
+                statusLabel.Text = ex.Message;
+            }
         }
     }
 }
