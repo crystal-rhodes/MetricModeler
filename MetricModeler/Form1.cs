@@ -174,7 +174,7 @@ namespace MetricModeler
                 double functionPoints = complexitiyAdjustmentFactor * unadjustedFunctionPoints;
 
                 // Get Language Productivity Factor
-                double languageProductivityFactor = languageList.Find(l => l.LanguageName == languageComboBox.SelectedItem.ToString()).Average;
+                double languageProductivityFactor = languageList.Find(l => l.LanguageName == languageComboBox.SelectedItem.ToString()).Level;
 
                 // Calculate lines of code
                 double LOC = functionPoints * languageProductivityFactor;
