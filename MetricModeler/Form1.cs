@@ -16,7 +16,7 @@ namespace MetricModeler
         List<Language> languageList;
         const double EAF = 1; // effort adjustment factor
         const double T = 0.35; // sloc-dependent coefficient
-        const double P = 1.14; // project complexity
+        double P = 1.14; // project complexity
         const double pricingPerHour = 50.00;
 
         public Form1()
@@ -35,6 +35,17 @@ namespace MetricModeler
         private void Form1_Load(object sender, EventArgs e)
         {
             languageComboBox.DataSource = languageList.Select(l => l.LanguageName).ToList();
+
+
+            List<string> functionExpectationList = new List<string>();
+            functionExpectationList.Add("1 - Very low");
+            functionExpectationList.Add("2 - Low");
+            functionExpectationList.Add("3 - Medium");
+            functionExpectationList.Add("4 - High");
+            functionExpectationList.Add("5 - Very high");
+            
+            functionExpectationComboBox.DataSource = functionExpectationList;
+
         }
 
         private void readProjectHistory()
@@ -82,7 +93,8 @@ namespace MetricModeler
                                 (int)reader["Language Productivity Factor"],
                                 (int)reader["CPM Tasks Defined"],
                                 (int)reader["Change Orders Issued"],
-                                (int)reader["Documentation Pages"]
+                                (int)reader["Documentation Pages"],
+                                (int)reader["Required functionalities expectation"]
                                 )
                             );
                         }
@@ -166,6 +178,31 @@ namespace MetricModeler
                 // Calculate thousands of code
                 double KLOC = functionPoints * languageProductivityFactor / 1000;
 
+                // Calculate required functionalities Expectation
+                int functionLevel = int.Parse(functionExpectationComboBox.SelectedItem.ToString()[0].ToString());
+                Console.WriteLine(functionLevel);
+                switch (functionLevel) 
+                {
+                    case 1:
+                        P = 1.04;
+                        break;
+                    case 2:
+                        P = 1.09;
+                        break;
+                    case 3:
+                        P = 1.14;
+                        break;
+                    case 4:
+                        P = 1.19;
+                        break;
+                    case 5:
+                        P = 1.24;
+                        break;
+                    default:
+                        P = 1.14;
+                        break;
+                }
+
                 // PM = 2.45*EAF*(SLOC/1000)^P
                 double personMonth = 2.45 * EAF * Math.Pow(LOC / 100, P);
 
@@ -195,5 +232,6 @@ namespace MetricModeler
                 statusLabel.Text = ex.Message;
             }
         }
+
     }
 }

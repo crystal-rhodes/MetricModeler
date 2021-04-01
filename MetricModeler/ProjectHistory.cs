@@ -34,13 +34,14 @@ namespace MetricModeler
         public int CPMTasksDefined { get; internal set; }
         public int ChangeOrdersIssued { get; internal set; }
         public int DocumentationPages { get; internal set; }
-
+        public int RequiredFunctionalitiesExpectation { get; internal set; }
+        
         public ProjectHistory(string projectId, string projectName, string projectDescription, 
             string projectType, DateTime startDate, DateTime endDate, int estDuration, int estProjectCost, 
             int actualProjectCost, int estEffort, int actualEffort, int estLOC, int actualLOC, int estimatedFP, 
             int actualFP, int expectedErrorRate, int aveCostPerPersonHour, int averageStaffingLevel, int designReviewHours, 
             int errorsFound, int defectsReported, string developmentLanguage, int languageProductivityFactor, int cPMTasksDefined, 
-            int changeOrdersIssued, int documentationPages)
+            int changeOrdersIssued, int documentationPages, int requiredFunctionalitiesExpectation)
         {
             ProjectId = projectId;
             ProjectName = projectName;
@@ -68,6 +69,7 @@ namespace MetricModeler
             CPMTasksDefined = cPMTasksDefined;
             ChangeOrdersIssued = changeOrdersIssued;
             DocumentationPages = documentationPages;
+            RequiredFunctionalitiesExpectation = requiredFunctionalitiesExpectation;
         }
 
         public override string ToString()
