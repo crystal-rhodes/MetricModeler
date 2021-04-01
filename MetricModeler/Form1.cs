@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -43,7 +44,7 @@ namespace MetricModeler
             functionExpectationList.Add("3 - Medium");
             functionExpectationList.Add("4 - High");
             functionExpectationList.Add("5 - Very high");
-            
+
             functionExpectationComboBox.DataSource = functionExpectationList;
 
         }
@@ -94,7 +95,9 @@ namespace MetricModeler
                                 (int)reader["CPM Tasks Defined"],
                                 (int)reader["Change Orders Issued"],
                                 (int)reader["Documentation Pages"],
-                                (int)reader["Required functionalities expectation"]
+                                (int)reader["Required functionalities expectation"],
+                                (int)reader["Number of Tables"]
+
                                 )
                             );
                         }
@@ -145,6 +148,7 @@ namespace MetricModeler
                 int averageStaffingLevel = int.Parse(averageStaffingLevelTextBox.Text);
                 int averageCostPerHour = int.Parse(averageCostPerHourTextBox.Text);
                 int designReviewHours = int.Parse(this.designReviewHoursTextBox.Text);
+                int NumTables = int.Parse(this.numTables.Text);
 
                 int inputsValue = int.Parse(noInputValue.Text);
                 int outputsValue = int.Parse(noOutputValue.Text);
@@ -181,7 +185,7 @@ namespace MetricModeler
                 // Calculate required functionalities Expectation
                 int functionLevel = int.Parse(functionExpectationComboBox.SelectedItem.ToString()[0].ToString());
                 Console.WriteLine(functionLevel);
-                switch (functionLevel) 
+                switch (functionLevel)
                 {
                     case 1:
                         P = 1.04;
@@ -204,7 +208,7 @@ namespace MetricModeler
                 }
 
                 // PM = 2.45*EAF*(SLOC/1000)^P
-                double personMonth = 2.45 * EAF * Math.Pow(LOC / 100, P);
+                double personMonth = 2.45 * EAF * Math.Pow(LOC / 100, P) * (NumTables * 0.01);
 
                 personMonth = personMonth * (100 - (1.0 * averageStaffingLevel / 5 * 10)) / 100;
 
@@ -226,6 +230,54 @@ namespace MetricModeler
                 languageProductivityLabel.Text = languageProductivityFactor.ToString();
 
                 statusLabel.Text = "Size metrics of the project have been calculated. Waiting for new input";
+
+
+
+                // BELOW THIS IS THE STUFF I ADDED TO SORT THE TABLES
+
+                Console.WriteLine("Part 4 Compare projects based on the cost, scope and  time");
+                Console.WriteLine("");
+
+                Console.WriteLine("Sorted By Cost");
+
+                List<ProjectHistory> copyList = projectHistoryList.OrderBy(o=>o.EstProjectCost).ToList();
+
+
+                foreach (ProjectHistory p in copyList)
+                {
+                    
+                        Console.WriteLine("Name: " + p.ProjectName + " The type of project: " + p.ProjectType + "Estimated Cost" + p.EstProjectCost + "Actual Cost" + p.ActualProjectCost);
+                    
+                }
+
+                Console.WriteLine("Sorted By Scope");
+
+                copyList = projectHistoryList.OrderBy(o => o.EstimatedFP).ToList();
+
+
+                foreach (ProjectHistory p in copyList)
+                {
+
+                    Console.WriteLine("Name: " + p.ProjectName + " The type of project: " + p.ProjectType + "Estimated Scope" + p.EstimatedFP + "Actual Scope" + p.ActualFP);
+
+                }
+
+                Console.WriteLine("Sorted By Time");
+
+                copyList = projectHistoryList.OrderBy(o => o.EstDuration).ToList();
+
+                TimeSpan ts;
+                int diffDays;
+
+                foreach (ProjectHistory p in copyList)
+                {
+                    ts = p.EndDate - p.StartDate;
+                    diffDays = ts.Days;
+                    Console.WriteLine("Name: " + p.ProjectName + " The type of project: " + p.ProjectType + "Estimated Duration" + p.EstDuration + "Actual Time" + diffDays);
+
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -233,5 +285,9 @@ namespace MetricModeler
             }
         }
 
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

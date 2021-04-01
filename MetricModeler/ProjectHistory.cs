@@ -35,13 +35,16 @@ namespace MetricModeler
         public int ChangeOrdersIssued { get; internal set; }
         public int DocumentationPages { get; internal set; }
         public int RequiredFunctionalitiesExpectation { get; internal set; }
-        
-        public ProjectHistory(string projectId, string projectName, string projectDescription, 
-            string projectType, DateTime startDate, DateTime endDate, int estDuration, int estProjectCost, 
-            int actualProjectCost, int estEffort, int actualEffort, int estLOC, int actualLOC, int estimatedFP, 
-            int actualFP, int expectedErrorRate, int aveCostPerPersonHour, int averageStaffingLevel, int designReviewHours, 
-            int errorsFound, int defectsReported, string developmentLanguage, int languageProductivityFactor, int cPMTasksDefined, 
-            int changeOrdersIssued, int documentationPages, int requiredFunctionalitiesExpectation)
+
+        public int NumTables { get; internal set; }
+
+
+        public ProjectHistory(string projectId, string projectName, string projectDescription,
+            string projectType, DateTime startDate, DateTime endDate, int estDuration, int estProjectCost,
+            int actualProjectCost, int estEffort, int actualEffort, int estLOC, int actualLOC, int estimatedFP,
+            int actualFP, int expectedErrorRate, int aveCostPerPersonHour, int averageStaffingLevel, int designReviewHours,
+            int errorsFound, int defectsReported, string developmentLanguage, int languageProductivityFactor, int cPMTasksDefined,
+            int changeOrdersIssued, int documentationPages, int requiredFunctionalitiesExpectation, int numTables)
         {
             ProjectId = projectId;
             ProjectName = projectName;
@@ -70,6 +73,7 @@ namespace MetricModeler
             ChangeOrdersIssued = changeOrdersIssued;
             DocumentationPages = documentationPages;
             RequiredFunctionalitiesExpectation = requiredFunctionalitiesExpectation;
+            NumTables = numTables;
         }
 
         public override string ToString()
