@@ -131,6 +131,8 @@ namespace MetricModeler
                 double complexitiyAdjustmentFactor = 0.65 + (0.01 * factor);
 
                 int averageStaffingLevel = int.Parse(averageStaffingLevelTextBox.Text);
+                int averageCostPerHour = int.Parse(averageCostPerHourTextBox.Text);
+                int designReviewHours = int.Parse(this.designReviewHoursTextBox.Text);
 
                 int inputsValue = int.Parse(noInputValue.Text);
                 int outputsValue = int.Parse(noOutputValue.Text);
@@ -167,7 +169,7 @@ namespace MetricModeler
                 // PM = 2.45*EAF*(SLOC/1000)^P
                 double personMonth = 2.45 * EAF * Math.Pow(LOC / 100, P);
 
-                personMonth =  personMonth * ( 100 - (1.0 * averageStaffingLevel / 5 * 10)) / 100;
+                personMonth = personMonth * (100 - (1.0 * averageStaffingLevel / 5 * 10)) / 100;
 
                 // DM = 2.50*(PM)^T
                 double durationMonths = 2.50 * Math.Pow(personMonth, T);
@@ -175,7 +177,9 @@ namespace MetricModeler
                 // Assuming that 7 working hours per day, 20 days per month, and 12 working months per year
                 double durationDays = durationMonths * 20 * 7;
 
-                double cost = durationDays * pricingPerHour;
+                double designReviewCost = designReviewHours * pricingPerHour;
+
+                double cost = designReviewCost + (durationDays * averageCostPerHour);
 
                 timeLabel.Text = Math.Round(durationMonths, 2) + " Months"; // time
                 scopeLabel.Text = Math.Round(personMonth, 2) + " Person-months"; // scope
@@ -183,6 +187,8 @@ namespace MetricModeler
                 functionPointsLabel.Text = Math.Round(functionPoints, 2).ToString();
                 klocLabel.Text = Math.Round(KLOC, 2).ToString();
                 languageProductivityLabel.Text = languageProductivityFactor.ToString();
+
+                statusLabel.Text = "Size metrics of the project have been calculated. Waiting for new input";
             }
             catch (Exception ex)
             {

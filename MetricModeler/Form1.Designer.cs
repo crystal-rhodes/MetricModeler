@@ -65,11 +65,15 @@ namespace MetricModeler
             this.label21 = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.klocLabel = new System.Windows.Forms.Label();
             this.averageStaffingLevelTextBox = new System.Windows.Forms.TextBox();
+            this.designReviewHoursTextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.averageCostPerHourTextBox = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +88,7 @@ namespace MetricModeler
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 253);
+            this.label2.Location = new System.Drawing.Point(159, 438);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 1;
@@ -100,7 +104,7 @@ namespace MetricModeler
             // 
             // noInputValue
             // 
-            this.noInputValue.Location = new System.Drawing.Point(264, 253);
+            this.noInputValue.Location = new System.Drawing.Point(266, 438);
             this.noInputValue.Name = "noInputValue";
             this.noInputValue.Size = new System.Drawing.Size(151, 27);
             this.noInputValue.TabIndex = 3;
@@ -108,7 +112,7 @@ namespace MetricModeler
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(145, 295);
+            this.label3.Location = new System.Drawing.Point(147, 480);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 20);
             this.label3.TabIndex = 4;
@@ -116,7 +120,7 @@ namespace MetricModeler
             // 
             // noOutputValue
             // 
-            this.noOutputValue.Location = new System.Drawing.Point(264, 292);
+            this.noOutputValue.Location = new System.Drawing.Point(266, 477);
             this.noOutputValue.Name = "noOutputValue";
             this.noOutputValue.Size = new System.Drawing.Size(151, 27);
             this.noOutputValue.TabIndex = 5;
@@ -124,7 +128,7 @@ namespace MetricModeler
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(108, 333);
+            this.label4.Location = new System.Drawing.Point(110, 518);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 20);
             this.label4.TabIndex = 6;
@@ -133,7 +137,7 @@ namespace MetricModeler
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(116, 372);
+            this.label5.Location = new System.Drawing.Point(118, 557);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 20);
             this.label5.TabIndex = 7;
@@ -142,7 +146,7 @@ namespace MetricModeler
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(76, 412);
+            this.label6.Location = new System.Drawing.Point(78, 597);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(157, 20);
             this.label6.TabIndex = 8;
@@ -150,56 +154,56 @@ namespace MetricModeler
             // 
             // noInquiriesValue
             // 
-            this.noInquiriesValue.Location = new System.Drawing.Point(264, 333);
+            this.noInquiriesValue.Location = new System.Drawing.Point(266, 518);
             this.noInquiriesValue.Name = "noInquiriesValue";
             this.noInquiriesValue.Size = new System.Drawing.Size(151, 27);
             this.noInquiriesValue.TabIndex = 9;
             // 
             // noLogicalFilesValue
             // 
-            this.noLogicalFilesValue.Location = new System.Drawing.Point(264, 372);
+            this.noLogicalFilesValue.Location = new System.Drawing.Point(266, 557);
             this.noLogicalFilesValue.Name = "noLogicalFilesValue";
             this.noLogicalFilesValue.Size = new System.Drawing.Size(151, 27);
             this.noLogicalFilesValue.TabIndex = 10;
             // 
             // noExternalInterfacesValue
             // 
-            this.noExternalInterfacesValue.Location = new System.Drawing.Point(264, 409);
+            this.noExternalInterfacesValue.Location = new System.Drawing.Point(266, 594);
             this.noExternalInterfacesValue.Name = "noExternalInterfacesValue";
             this.noExternalInterfacesValue.Size = new System.Drawing.Size(151, 27);
             this.noExternalInterfacesValue.TabIndex = 11;
             // 
             // noExternalInterfacesWeightingFactor
             // 
-            this.noExternalInterfacesWeightingFactor.Location = new System.Drawing.Point(440, 409);
+            this.noExternalInterfacesWeightingFactor.Location = new System.Drawing.Point(442, 594);
             this.noExternalInterfacesWeightingFactor.Name = "noExternalInterfacesWeightingFactor";
             this.noExternalInterfacesWeightingFactor.Size = new System.Drawing.Size(151, 27);
             this.noExternalInterfacesWeightingFactor.TabIndex = 16;
             // 
             // noLogicalFilesWeightingFactor
             // 
-            this.noLogicalFilesWeightingFactor.Location = new System.Drawing.Point(440, 372);
+            this.noLogicalFilesWeightingFactor.Location = new System.Drawing.Point(442, 557);
             this.noLogicalFilesWeightingFactor.Name = "noLogicalFilesWeightingFactor";
             this.noLogicalFilesWeightingFactor.Size = new System.Drawing.Size(151, 27);
             this.noLogicalFilesWeightingFactor.TabIndex = 15;
             // 
             // noInquiriesWeightingFactor
             // 
-            this.noInquiriesWeightingFactor.Location = new System.Drawing.Point(440, 333);
+            this.noInquiriesWeightingFactor.Location = new System.Drawing.Point(442, 518);
             this.noInquiriesWeightingFactor.Name = "noInquiriesWeightingFactor";
             this.noInquiriesWeightingFactor.Size = new System.Drawing.Size(151, 27);
             this.noInquiriesWeightingFactor.TabIndex = 14;
             // 
             // noOutputWeightingFactor
             // 
-            this.noOutputWeightingFactor.Location = new System.Drawing.Point(440, 292);
+            this.noOutputWeightingFactor.Location = new System.Drawing.Point(442, 477);
             this.noOutputWeightingFactor.Name = "noOutputWeightingFactor";
             this.noOutputWeightingFactor.Size = new System.Drawing.Size(151, 27);
             this.noOutputWeightingFactor.TabIndex = 13;
             // 
             // noInputWeightingFactor
             // 
-            this.noInputWeightingFactor.Location = new System.Drawing.Point(440, 253);
+            this.noInputWeightingFactor.Location = new System.Drawing.Point(442, 438);
             this.noInputWeightingFactor.Name = "noInputWeightingFactor";
             this.noInputWeightingFactor.Size = new System.Drawing.Size(151, 27);
             this.noInputWeightingFactor.TabIndex = 12;
@@ -224,7 +228,7 @@ namespace MetricModeler
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(313, 216);
+            this.label8.Location = new System.Drawing.Point(315, 401);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 20);
             this.label8.TabIndex = 24;
@@ -233,7 +237,7 @@ namespace MetricModeler
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(454, 216);
+            this.label9.Location = new System.Drawing.Point(456, 401);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(121, 20);
             this.label9.TabIndex = 25;
@@ -242,7 +246,7 @@ namespace MetricModeler
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(33, 479);
+            this.label11.Location = new System.Drawing.Point(35, 664);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(200, 20);
             this.label11.TabIndex = 27;
@@ -251,7 +255,7 @@ namespace MetricModeler
             // languageProductivityLabel
             // 
             this.languageProductivityLabel.AutoSize = true;
-            this.languageProductivityLabel.Location = new System.Drawing.Point(264, 479);
+            this.languageProductivityLabel.Location = new System.Drawing.Point(266, 664);
             this.languageProductivityLabel.Name = "languageProductivityLabel";
             this.languageProductivityLabel.Size = new System.Drawing.Size(17, 20);
             this.languageProductivityLabel.TabIndex = 28;
@@ -260,7 +264,7 @@ namespace MetricModeler
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(125, 513);
+            this.label12.Location = new System.Drawing.Point(127, 698);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(108, 20);
             this.label12.TabIndex = 29;
@@ -269,7 +273,7 @@ namespace MetricModeler
             // functionPointsLabel
             // 
             this.functionPointsLabel.AutoSize = true;
-            this.functionPointsLabel.Location = new System.Drawing.Point(264, 513);
+            this.functionPointsLabel.Location = new System.Drawing.Point(266, 698);
             this.functionPointsLabel.Name = "functionPointsLabel";
             this.functionPointsLabel.Size = new System.Drawing.Size(17, 20);
             this.functionPointsLabel.TabIndex = 30;
@@ -278,7 +282,7 @@ namespace MetricModeler
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(187, 591);
+            this.label13.Location = new System.Drawing.Point(189, 776);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(50, 20);
             this.label13.TabIndex = 31;
@@ -287,7 +291,7 @@ namespace MetricModeler
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(199, 630);
+            this.label14.Location = new System.Drawing.Point(201, 815);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 20);
             this.label14.TabIndex = 32;
@@ -296,7 +300,7 @@ namespace MetricModeler
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(199, 670);
+            this.label15.Location = new System.Drawing.Point(201, 855);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(42, 20);
             this.label15.TabIndex = 33;
@@ -305,7 +309,7 @@ namespace MetricModeler
             // scopeLabel
             // 
             this.scopeLabel.AutoSize = true;
-            this.scopeLabel.Location = new System.Drawing.Point(264, 591);
+            this.scopeLabel.Location = new System.Drawing.Point(266, 776);
             this.scopeLabel.Name = "scopeLabel";
             this.scopeLabel.Size = new System.Drawing.Size(17, 20);
             this.scopeLabel.TabIndex = 36;
@@ -324,7 +328,7 @@ namespace MetricModeler
             // costLabel
             // 
             this.costLabel.AutoSize = true;
-            this.costLabel.Location = new System.Drawing.Point(264, 630);
+            this.costLabel.Location = new System.Drawing.Point(266, 815);
             this.costLabel.Name = "costLabel";
             this.costLabel.Size = new System.Drawing.Size(17, 20);
             this.costLabel.TabIndex = 38;
@@ -333,7 +337,7 @@ namespace MetricModeler
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(522, 479);
+            this.label19.Location = new System.Drawing.Point(524, 664);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(254, 20);
             this.label19.TabIndex = 39;
@@ -342,7 +346,7 @@ namespace MetricModeler
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(522, 513);
+            this.label20.Location = new System.Drawing.Point(524, 698);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(258, 20);
             this.label20.TabIndex = 40;
@@ -351,7 +355,7 @@ namespace MetricModeler
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(522, 546);
+            this.label21.Location = new System.Drawing.Point(524, 731);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(201, 20);
             this.label21.TabIndex = 41;
@@ -360,7 +364,7 @@ namespace MetricModeler
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(264, 670);
+            this.timeLabel.Location = new System.Drawing.Point(266, 855);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(17, 20);
             this.timeLabel.TabIndex = 42;
@@ -375,28 +379,10 @@ namespace MetricModeler
             this.label10.TabIndex = 43;
             this.label10.Text = "Average Staffing Level";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(33, 718);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 20);
-            this.label16.TabIndex = 45;
-            this.label16.Text = "Status";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(107, 718);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(152, 20);
-            this.statusLabel.TabIndex = 46;
-            this.statusLabel.Text = "Waiting for user input";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(189, 546);
+            this.label17.Location = new System.Drawing.Point(191, 731);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(44, 20);
             this.label17.TabIndex = 47;
@@ -405,7 +391,7 @@ namespace MetricModeler
             // klocLabel
             // 
             this.klocLabel.AutoSize = true;
-            this.klocLabel.Location = new System.Drawing.Point(264, 546);
+            this.klocLabel.Location = new System.Drawing.Point(266, 731);
             this.klocLabel.Name = "klocLabel";
             this.klocLabel.Size = new System.Drawing.Size(17, 20);
             this.klocLabel.TabIndex = 48;
@@ -418,16 +404,70 @@ namespace MetricModeler
             this.averageStaffingLevelTextBox.Size = new System.Drawing.Size(151, 27);
             this.averageStaffingLevelTextBox.TabIndex = 49;
             // 
+            // designReviewHoursTextBox
+            // 
+            this.designReviewHoursTextBox.Location = new System.Drawing.Point(264, 176);
+            this.designReviewHoursTextBox.Name = "designReviewHoursTextBox";
+            this.designReviewHoursTextBox.Size = new System.Drawing.Size(151, 27);
+            this.designReviewHoursTextBox.TabIndex = 51;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(84, 179);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(149, 20);
+            this.label18.TabIndex = 50;
+            this.label18.Text = "Design Review Hours";
+            // 
+            // averageCostPerHourTextBox
+            // 
+            this.averageCostPerHourTextBox.Location = new System.Drawing.Point(264, 211);
+            this.averageCostPerHourTextBox.Name = "averageCostPerHourTextBox";
+            this.averageCostPerHourTextBox.Size = new System.Drawing.Size(151, 27);
+            this.averageCostPerHourTextBox.TabIndex = 53;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(75, 214);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(158, 20);
+            this.label22.TabIndex = 52;
+            this.label22.Text = "Average Cost Per Hour";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(266, 889);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(152, 20);
+            this.statusLabel.TabIndex = 55;
+            this.statusLabel.Text = "Waiting for user input";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(192, 889);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 20);
+            this.label16.TabIndex = 54;
+            this.label16.Text = "Status";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 762);
+            this.ClientSize = new System.Drawing.Size(808, 930);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.averageCostPerHourTextBox);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.designReviewHoursTextBox);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.averageStaffingLevelTextBox);
             this.Controls.Add(this.klocLabel);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.label21);
@@ -510,11 +550,15 @@ namespace MetricModeler
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label klocLabel;
         private System.Windows.Forms.TextBox averageStaffingLevelTextBox;
+        private System.Windows.Forms.TextBox designReviewHoursTextBox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox averageCostPerHourTextBox;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label label16;
     }
 }
 
