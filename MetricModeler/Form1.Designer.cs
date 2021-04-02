@@ -67,7 +67,7 @@ namespace MetricModeler
             this.label10 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.klocLabel = new System.Windows.Forms.Label();
-            this.averageStaffingLevelTextBox = new System.Windows.Forms.TextBox();
+            this.softwareDevelopmentCapabilityTextBox = new System.Windows.Forms.TextBox();
             this.designReviewHoursTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.averageCostPerHourTextBox = new System.Windows.Forms.TextBox();
@@ -413,12 +413,12 @@ namespace MetricModeler
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(74, 146);
+            this.label10.Location = new System.Drawing.Point(0, 143);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(158, 20);
+            this.label10.Size = new System.Drawing.Size(233, 20);
             this.label10.TabIndex = 43;
-            this.label10.Text = "Average Staffing Level";
+            this.label10.Text = "Software Development Capability";
             // 
             // label17
             // 
@@ -440,13 +440,13 @@ namespace MetricModeler
             this.klocLabel.TabIndex = 48;
             this.klocLabel.Text = "0";
             // 
-            // averageStaffingLevelTextBox
+            // softwareDevelopmentCapabilityTextBox
             // 
-            this.averageStaffingLevelTextBox.Location = new System.Drawing.Point(264, 143);
-            this.averageStaffingLevelTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.averageStaffingLevelTextBox.Name = "averageStaffingLevelTextBox";
-            this.averageStaffingLevelTextBox.Size = new System.Drawing.Size(150, 27);
-            this.averageStaffingLevelTextBox.TabIndex = 49;
+            this.softwareDevelopmentCapabilityTextBox.Location = new System.Drawing.Point(264, 143);
+            this.softwareDevelopmentCapabilityTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.softwareDevelopmentCapabilityTextBox.Name = "softwareDevelopmentCapabilityTextBox";
+            this.softwareDevelopmentCapabilityTextBox.Size = new System.Drawing.Size(150, 27);
+            this.softwareDevelopmentCapabilityTextBox.TabIndex = 49;
             // 
             // designReviewHoursTextBox
             // 
@@ -568,7 +568,7 @@ namespace MetricModeler
             this.Controls.Add(this.label22);
             this.Controls.Add(this.designReviewHoursTextBox);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.averageStaffingLevelTextBox);
+            this.Controls.Add(this.softwareDevelopmentCapabilityTextBox);
             this.Controls.Add(this.klocLabel);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label10);
@@ -656,7 +656,7 @@ namespace MetricModeler
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label klocLabel;
-        private System.Windows.Forms.TextBox averageStaffingLevelTextBox;
+        private System.Windows.Forms.TextBox softwareDevelopmentCapabilityTextBox;
         private System.Windows.Forms.TextBox designReviewHoursTextBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox averageCostPerHourTextBox;

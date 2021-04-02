@@ -25,7 +25,7 @@ namespace MetricModeler
         public int ActualFP { get; internal set; }
         public int ExpectedErrorRate { get; internal set; }
         public int AveCostPerPersonHour { get; internal set; }
-        public int AverageStaffingLevel { get; internal set; }
+        public int SoftwareDevelopmentCapability { get; internal set; }
         public int DesignReviewHours { get; internal set; }
         public int ErrorsFound { get; internal set; }
         public int DefectsReported { get; internal set; }
@@ -42,7 +42,7 @@ namespace MetricModeler
         public ProjectHistory(string projectId, string projectName, string projectDescription,
             string projectType, DateTime startDate, DateTime endDate, int estDuration, int estProjectCost,
             int actualProjectCost, int estEffort, int actualEffort, int estLOC, int actualLOC, int estimatedFP,
-            int actualFP, int expectedErrorRate, int aveCostPerPersonHour, int averageStaffingLevel, int designReviewHours,
+            int actualFP, int expectedErrorRate, int aveCostPerPersonHour, int softwareDevelopmentCapability, int designReviewHours,
             int errorsFound, int defectsReported, string developmentLanguage, int languageProductivityFactor, int cPMTasksDefined,
             int changeOrdersIssued, int documentationPages, int requiredFunctionalitiesExpectation, int numTables)
         {
@@ -63,7 +63,7 @@ namespace MetricModeler
             ActualFP = actualFP;
             ExpectedErrorRate = expectedErrorRate;
             AveCostPerPersonHour = aveCostPerPersonHour;
-            AverageStaffingLevel = averageStaffingLevel;
+            SoftwareDevelopmentCapability = softwareDevelopmentCapability;
             DesignReviewHours = designReviewHours;
             ErrorsFound = errorsFound;
             DefectsReported = defectsReported;

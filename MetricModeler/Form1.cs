@@ -86,7 +86,7 @@ namespace MetricModeler
                                 (int)reader["Actual FP"],
                                 (int)reader["Expected Error Rate"],
                                 (int)reader["Ave Cost per Person Hour"],
-                                (int)reader["Average Staffing Level"],
+                                (int)reader["Software Development Capability"],
                                 (int)reader["Design Review Hours"],
                                 (int)reader["Errors Found"],
                                 (int)reader["Defects Reported"],
@@ -145,7 +145,7 @@ namespace MetricModeler
                 int factor = 14 * scale;
                 double complexitiyAdjustmentFactor = 0.65 + (0.01 * factor);
 
-                int averageStaffingLevel = int.Parse(averageStaffingLevelTextBox.Text);
+                int softwareDevelopmentCapability = int.Parse(softwareDevelopmentCapabilityTextBox.Text);
                 int averageCostPerHour = int.Parse(averageCostPerHourTextBox.Text);
                 int designReviewHours = int.Parse(this.designReviewHoursTextBox.Text);
                 int NumTables = int.Parse(this.numTables.Text);
@@ -210,7 +210,7 @@ namespace MetricModeler
                 // PM = 2.45*EAF*(SLOC/1000)^P
                 double personMonth = 2.45 * EAF * Math.Pow(LOC / 100, P) * (NumTables * 0.01);
 
-                personMonth = personMonth * (100 - (1.0 * averageStaffingLevel / 5 * 10)) / 100;
+                personMonth = personMonth * (100 - (1.0 * softwareDevelopmentCapability / 5 * 10)) / 100;
 
                 // DM = 2.50*(PM)^T
                 double durationMonths = 2.50 * Math.Pow(personMonth, T);
