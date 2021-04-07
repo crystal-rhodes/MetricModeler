@@ -31,7 +31,7 @@ namespace MetricModeler
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.projectTypeComboBox = new System.Windows.Forms.ComboBox();
             this.noInputValue = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.noOutputValue = new System.Windows.Forms.TextBox();
@@ -101,14 +101,14 @@ namespace MetricModeler
             this.label2.TabIndex = 1;
             this.label2.Text = "No. Inputs";
             // 
-            // comboBox1
+            // projectTypeComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(264, 73);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 28);
-            this.comboBox1.TabIndex = 2;
+            this.projectTypeComboBox.FormattingEnabled = true;
+            this.projectTypeComboBox.Location = new System.Drawing.Point(264, 73);
+            this.projectTypeComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.projectTypeComboBox.Name = "projectTypeComboBox";
+            this.projectTypeComboBox.Size = new System.Drawing.Size(150, 28);
+            this.projectTypeComboBox.TabIndex = 2;
             // 
             // noInputValue
             // 
@@ -604,7 +604,7 @@ namespace MetricModeler
             this.Controls.Add(this.noOutputValue);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.noInputValue);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.projectTypeComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -620,7 +620,7 @@ namespace MetricModeler
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox projectTypeComboBox;
         private System.Windows.Forms.TextBox noInputValue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox noOutputValue;

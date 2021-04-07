@@ -37,6 +37,13 @@ namespace MetricModeler
         {
             languageComboBox.DataSource = languageList.Select(l => l.LanguageName).ToList();
 
+            List<string> projectTypes = new List<string>();
+            projectTypes.Add("1 - Linear");
+            projectTypes.Add("2 - OO");
+            projectTypes.Add("3 - Other");
+            projectTypeComboBox.DataSource = projectTypes;
+
+            softwareDevelopmentCapabilityTextBox.Text = "3";
 
             List<string> functionExpectationList = new List<string>();
             functionExpectationList.Add("1 - Very low");
@@ -46,7 +53,17 @@ namespace MetricModeler
             functionExpectationList.Add("5 - Very high");
 
             functionExpectationComboBox.DataSource = functionExpectationList;
+            functionExpectationComboBox.SelectedIndex = 2;
 
+            designReviewHoursTextBox.Text = "8";
+            averageCostPerHourTextBox.Text = "40";
+            numTables.Text = "10";
+
+            noInputWeightingFactor.Text = "4";
+            noOutputWeightingFactor.Text = "5";
+            noInquiriesWeightingFactor.Text = "4";
+            noLogicalFilesWeightingFactor.Text = "10";
+            noExternalInterfacesWeightingFactor.Text = "7";
         }
 
         private void readProjectHistory()
@@ -78,24 +95,15 @@ namespace MetricModeler
                                 (int)reader["Est Duration"],
                                 (int)reader["Est Project Cost"],
                                 (int)reader["Actual Project Cost"],
-                                (int)reader["Est Effort"],
-                                (int)reader["Actual Effort"],
-                                (int)reader["Est LOC"],
-                                (int)reader["Actual LOC"],
+                                (int)reader["LOC"],
                                 (int)reader["Estimated FP"],
                                 (int)reader["Actual FP"],
-                                (int)reader["Expected Error Rate"],
                                 (int)reader["Ave Cost per Person Hour"],
                                 (int)reader["Software Development Capability"],
                                 (int)reader["Design Review Hours"],
-                                (int)reader["Errors Found"],
-                                (int)reader["Defects Reported"],
                                 reader["Development Language"].ToString(),
                                 (int)reader["Language Productivity Factor"],
-                                (int)reader["CPM Tasks Defined"],
-                                (int)reader["Change Orders Issued"],
-                                (int)reader["Documentation Pages"],
-                                (int)reader["Required functionalities expectation"],
+                                (int)reader["Required Functionalities Expectation"],
                                 (int)reader["Number of Tables"]
 
                                 )
@@ -161,6 +169,12 @@ namespace MetricModeler
                 int inquiriesWeightingFactor = int.Parse(noInquiriesWeightingFactor.Text);
                 int logicalFilesWeightingFactor = int.Parse(noLogicalFilesWeightingFactor.Text);
                 int externalInterfacesWeightingFactor = int.Parse(noExternalInterfacesWeightingFactor.Text);
+
+                if (softwareDevelopmentCapability >= 10)
+                {
+                    statusLabel.Text = "Software Development Capability must be < 10";
+                    return;
+                }
 
                 // Calculate unadjusted function points
                 int unadjustedFunctionPoints =
@@ -240,14 +254,14 @@ namespace MetricModeler
 
                 Console.WriteLine("Sorted By Cost");
 
-                List<ProjectHistory> copyList = projectHistoryList.OrderBy(o=>o.EstProjectCost).ToList();
+                List<ProjectHistory> copyList = projectHistoryList.OrderBy(o => o.EstProjectCost).ToList();
 
 
                 foreach (ProjectHistory p in copyList)
                 {
-                    
-                        Console.WriteLine("Name: " + p.ProjectName + " The type of project: " + p.ProjectType + "Estimated Cost" + p.EstProjectCost + "Actual Cost" + p.ActualProjectCost);
-                    
+
+                    Console.WriteLine("Name: " + p.ProjectName + " The type of project: " + p.ProjectType + "Estimated Cost" + p.EstProjectCost + "Actual Cost" + p.ActualProjectCost);
+
                 }
 
                 Console.WriteLine("Sorted By Scope");
@@ -281,7 +295,7 @@ namespace MetricModeler
             }
             catch (Exception ex)
             {
-                statusLabel.Text = ex.Message;
+                statusLabel.Text = "Some fields are missing or are not entered in correct format.";
             }
         }
 
